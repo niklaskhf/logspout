@@ -1,12 +1,24 @@
-FROM alpine:3.11
-ENTRYPOINT ["/bin/logspout"]
+FROM golang:1.13-alpine3.12 AS builder
+ARG opts
+WORKDIR /go/src/github.com/gliderlabs/logspout/
+COPY . .
+RUN apk --no-cache add build-base git mercurial ca-certificates curl
+RUN go mod download
+RUN env ${opts} go build \
+    -ldflags "-X main.Version=$(cat VERSION)" \
+    -o bin/logspout \
+    .
+RUN apk del git mercurial build-base
+RUN rm -rf /var/cache/apk/*
+
+
+FROM alpine:3.12
+RUN apk add --no-cache ca-certificates
+COPY --from=builder /go/src/github.com/gliderlabs/logspout/bin/logspout /bin/logspout
+RUN ln -fs /tmp/docker.sock /var/run/docker.sock
+
 VOLUME /mnt/routes
 EXPOSE 80
 
-COPY . /src
-RUN cd /src && ./build.sh "$(cat VERSION)"
+ENTRYPOINT ["/bin/logspout"]
 
-ARG OPTS
-ONBUILD COPY ./build.sh /src/build.sh
-ONBUILD COPY ./modules.go /src/modules.go
-ONBUILD RUN cd /src && chmod +x ./build.sh && sleep 1 && sync && ./build.sh "$(cat VERSION)-custom" ${OPTS}

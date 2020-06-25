@@ -25,6 +25,8 @@ github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZN
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.4.0 h1:2E4SXV/wtOkTonXsotYi4li6zVWxYlZuYNCXe9XRJyk=
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
+github.com/zhmaeff/logspout-multiline v0.0.0-20180208083630-54ca5632e449 h1:QzO3pNrLgbFum8hxCVS1Xv5MPViuZVfm27m5OYMct9g=
+github.com/zhmaeff/logspout-multiline v0.0.0-20180208083630-54ca5632e449/go.mod h1:MiLKZ8UtAXl3wt5g9qbf6O7+vZa5U0eHb2qwhmlQ2QU=
 golang.org/x/net v0.0.0-20160707223729-f841c39de738 h1:N5K0l3yYkhlC0RSRoAhtspo2WgRvBMwZYoyB2ji+gkg=
 golang.org/x/net v0.0.0-20160707223729-f841c39de738/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=
 golang.org/x/sys v0.0.0-20160704031755-a408501be4d1 h1:QtO5ZFD1u7KisZhuRLL2GaZAZDdJqUcTdjFJj8OEePA=
